@@ -33,9 +33,9 @@ describe('Create Book API - POST /api/books', () => {
         title: 'Testing Beyond Limits',
         author: 'Alice Johnson',
       },
-      failOnStatusCode: false, // Prevent failure on non-2xx status codes
+      failOnStatusCode: false, 
     }).then((response) => {
-      expect(response.status).to.eq(201); // Assuming 201 Created is the response for a successful POST request
+      expect(response.status).to.eq(201);
       expect(response.body).to.have.property('title', 'Testing Beyond Limits');
       expect(response.body).to.have.property('author', 'Alice Johnson');
     });

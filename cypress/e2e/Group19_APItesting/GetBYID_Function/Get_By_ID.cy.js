@@ -3,7 +3,7 @@ describe('Get Book by ID API - Validate Response Codes and Data', () => {
   
     // Test case for fetching a book by a valid ID with admin login
     it('Should return the correct book when a valid ID is provided as admin', () => {
-      const validBookId =1; // Assuming a book with ID 34 exists
+      const validBookId =1; 
   
       cy.request({
         method: 'GET',
@@ -12,12 +12,12 @@ describe('Get Book by ID API - Validate Response Codes and Data', () => {
           username: 'admin',
           password: 'password',
         },
-        failOnStatusCode: false, // Prevent Cypress from failing on non-2xx status codes
+        failOnStatusCode: false, 
       }).then((response) => {
-        expect(response.status).to.eq(200); // Expected status code for successful retrieval
-        expect(response.body).to.have.property('id', validBookId); // Ensure correct book ID is returned
-        expect(response.body).to.have.property('title'); // Ensure title exists
-        expect(response.body).to.have.property('author'); // Ensure author exists
+        expect(response.status).to.eq(200); 
+        expect(response.body).to.have.property('id', validBookId); 
+        expect(response.body).to.have.property('title'); 
+        expect(response.body).to.have.property('author'); 
       });
     });
 
@@ -25,22 +25,22 @@ describe('Get Book by ID API - Validate Response Codes and Data', () => {
   
     // Test case for fetching a book by a valid ID with user login, expecting to get the book (fixing the bug)
     it('Should return the correct book when a valid ID is provided as a user (bug fix)', () => {
-      const validBookId = 1; // Assuming a book with ID 34 exists
+      const validBookId = 1; 
   
       cy.request({
         method: 'GET',
         url: `${baseUrl}/${validBookId}`,
         auth: {
-          username: 'user', // Login as a regular user
-          password: 'password', // Correct user password
+          username: 'user', 
+          password: 'password', 
         },
-        failOnStatusCode: false, // Prevent Cypress from failing on non-2xx status codes
+        failOnStatusCode: false, 
       }).then((response) => {
-        // This should be a success, not a 403
-        expect(response.status).to.eq(200); // Expected status code for successful retrieval
-        expect(response.body).to.have.property('id', validBookId); // Ensure correct book ID is returned
-        expect(response.body).to.have.property('title'); // Ensure title exists
-        expect(response.body).to.have.property('author'); // Ensure author exists
+        
+        expect(response.status).to.eq(200);
+        expect(response.body).to.have.property('id', validBookId); 
+        expect(response.body).to.have.property('title'); 
+        expect(response.body).to.have.property('author'); 
       });
     });
 
@@ -48,7 +48,7 @@ describe('Get Book by ID API - Validate Response Codes and Data', () => {
 
     // Test case for fetching a book with an invalid ID format (400)
     it('Should return 400 when an invalid book ID format is provided', () => {
-      const invalidBookId = 'abc'; // Invalid ID format (non-numeric)
+      const invalidBookId = 'abc'; 
   
       cy.request({
         method: 'GET',
@@ -57,11 +57,11 @@ describe('Get Book by ID API - Validate Response Codes and Data', () => {
           username: 'admin',
           password: 'password',
         },
-        failOnStatusCode: false, // Allow non-2xx responses for assertions
+        failOnStatusCode: false, 
       }).then((response) => {
-        expect(response.status).to.eq(400); // Expected status code for Bad Request
-        expect(response.body).to.not.be.empty; // Ensure the body is not empty
-        expect(response.body).to.have.property('message'); // Ensure the error message property exists
+        expect(response.status).to.eq(400); 
+        expect(response.body).to.not.be.empty;
+        expect(response.body).to.have.property('message'); 
       });
     });
 
@@ -76,10 +76,10 @@ describe('Get Book by ID API - Validate Response Codes and Data', () => {
           username: 'admin',
           password: 'password',
         },
-        failOnStatusCode: false, // Allow non-2xx responses for assertions
+        failOnStatusCode: false, 
       }).then((response) => {
-        expect(response.status).to.eq(400); // Expected status code for Bad Request
-        expect(response.body).to.have.property('message'); // Ensure the error message exists
+        expect(response.status).to.eq(400); 
+        expect(response.body).to.have.property('message'); 
       });
     });
   });
