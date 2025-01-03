@@ -13,7 +13,7 @@ describe('Verify the functionality of the Twitter link in the footer', () => {
   
       // Step 2: Verify the Twitter link is correct
       cy.get('[data-test="social-twitter"]')
-        .should('have.attr', 'href', 'https://twitter.com/saucelabs')
+        .should('have.attr', 'href', 'https://x.com/saucelabs')
         .and('have.attr', 'target', '_blank');
   
       // Optional: Click the link and ensure it opens correctly in a new tab
@@ -25,4 +25,3 @@ describe('Verify the functionality of the Twitter link in the footer', () => {
       });
     });
   });
-  

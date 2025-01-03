@@ -58,7 +58,7 @@ describe('Update Book API - Validate Response Codes and Data', () => {
     const updateAuthorOnlyData = {
       id: validBookId, // Ensure ID is included in the body
       title: 'de', // Title remains unchanged
-      author: 'Updated Author_updated1234', // Author is updated
+      author: 'Updated Author_updated', // Author is updated
     };
 
     cy.request({
@@ -83,8 +83,8 @@ describe('Update Book API - Validate Response Codes and Data', () => {
     const validBookId = 8; // Assuming a book with ID 4 exists
     const invalidUpdateData = {
       id: validBookId, // Ensure ID is included in the body
-      title: 12345678, // Invalid type for title (number instead of string)
-      author: false, // Invalid type for author (boolean instead of string)
+      title: 123, // Invalid type for title (number instead of string)
+      author: true, // Invalid type for author (boolean instead of string)
     };
   
     cy.request({
